@@ -1,0 +1,29 @@
+{
+  "shows": [
+    {
+      "title": "Arrow",
+      "year": 2012,
+      "favourite": true
+    },
+    {
+      "title": "GOT",
+      "year": 2002,
+      "favourite": true
+    },
+    {
+      "title": "Flash",
+      "year": 2011,
+      "favourite": false
+    },
+    {
+      "title": "BB",
+      "year": 2001,
+      "favourite": false
+    },
+    {
+      "title": "Criminal minds",
+      "year": 1998,
+      "favourite": true
+    }
+  ]
+}

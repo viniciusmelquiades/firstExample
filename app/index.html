@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><! <html lang="en" ng-app="myApp" class="no-js"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">-->
+  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/src/css/main.css">-->
+  <link rel="stylesheet" href="bower_components/bootstrap-bower/css/bootstrap.css">
+  <!--<link rel="stylesheet" href="bower_components/bootstrap-bower/css/bootstrap-theme.css">-->
+  <!--<link href="bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">-->
+  <!--<link href="bower_components/bootstrap-material-design/dist/css/material.min.css" rel="stylesheet">-->
+  <!--<link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">-->
+  <!--<link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">-->
+  <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/src/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="MainController as main">
+  <div class="container">
+      <h1>{{main.title}}</h1>
+    <div class="input-field">
+      <!--<span class="input-field">-->
+        <!--<span class="mdi-action-search left"></span>-->
+      <!--</span>-->
+      <!--<input type="text" class="form-control" ng-model="main.searchInput" clear-input>-->
+      <input id="search" type="text" ng-model="main.searchInput">
+      <label for="search"><i class="mdi-action-search left"></i></label>
+    </div>
+
+    <h3>List of shows</h3>
+    <ul class="collection">
+      <a href="#!" class="collection-item no-underline" ng-repeat="show in main.shows | filter:main.searchInput | orderBy:main.order.key:main.order.reverse">
+        <span class="mdi-action-grade" ng-if="show.favourite"></span> {{show.title}}
+        <!--<a href="#!" class="secondary-content" ng-if="show.favourite"><i class="mdi-action-grade"></i></a>-->
+        <span class="badge">{{show.year}}</span>
+      </a>
+    </ul>
+    <select ng-model="main.order" ng-options="order as order.title for order in main.orders"></select>
+
+    <div class="clearfix"></div>
+    <h3>Add a new Serial</h3>
+    <form name="main.addForm" ng-submit="main.addShow()">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="title" type="text" class="validate" required>
+          <label for="title">Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="year" type="number" min="1990" max="2015" class="validate" required>
+          <label for="year">Year</label>
+        </div>
+      </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+          <input type="checkbox" id="favourite" ng-model="main.new.favourite" />
+          <label for="favourite">Favourite</label>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-success btn-lg pull-right"><span class="mdi-content-add"></span> Add</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/materialize/dist/js/materialize.js"></script>
+
+  <!--<script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>-->
+  <!--<script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>-->
+  <!--<script>-->
+    <!--$(document).ready(function() {-->
+      <!--$('select').material_select();-->
+    <!--});-->
+  <!--</script>-->
+</body>
+</html>
