@@ -22,16 +22,15 @@ myApp.controller("MainController", function($http){
   $http.get('src/json/shows.json').success(function(response){
     //console.log(response.shows);
     vm.shows =  response.shows;
-    console.log(vm.shows);
+    //console.log(vm.shows);
 
   });
+  //$('select').material_select();
   $http.get('src/json/sortingKeys.json').success(function(response){
     //console.log(response.shows);
     vm.orders =  response.orders;
     vm.order = vm.orders[0];
-    $('select').material_select(vm.orders);
-
-    console.log(vm.orders);
+    //console.log(vm.orders);
   });
 
   vm.new = {};
@@ -41,3 +40,5 @@ myApp.controller("MainController", function($http){
   };
 
 });
+
+
