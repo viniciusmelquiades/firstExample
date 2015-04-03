@@ -1,8 +1,7 @@
-var myApp = angular.module('myApp',[]);
 (function () {
     'use strict';
 
-    myApp
+    angular.module('myApp')
         .directive('select', materialSelect);
     console.log("coming inside directive");
     materialSelect.$inject = ['$timeout'];
@@ -15,10 +14,10 @@ var myApp = angular.module('myApp',[]);
         };
 
         function link(scope, element, attrs, ngModel) {
+            $timeout(create);
+
             if (ngModel) {
                 ngModel.$render = create;
-            }else {
-                $timeout(create);
             }
 
             function create() {
@@ -28,21 +27,6 @@ var myApp = angular.module('myApp',[]);
             //if using materialize v0.96.0 use this
             element.one('$destroy', function () {
                 element.material_select('destroy');
-            });
-
-            //not required in materialize v0.96.0
-            element.one('$destroy', function () {
-                var parent = element.parent();
-                if (parent.is('.select-wrapper')) {
-                    var elementId = parent.children('input').attr('data-activates');
-                    if (elementId) {
-                        $('#' + elementId).remove();
-                    }
-                    parent.remove();
-                    return;
-                }
-
-                element.remove();
             });
         }
 

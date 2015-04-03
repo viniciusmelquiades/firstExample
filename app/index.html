@@ -20,14 +20,16 @@
   <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
   <link rel="stylesheet" href="app.css">
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/materialize/dist/js/materialize.js"></script>
   <script src="bower_components/html5-boilerplate/src/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
-  <script src="src/directive/directive.js"></script>
   <script src="app.js"></script>
+  <script src="src/directive/directive.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="MainController as main">
   <div class="container">
@@ -49,7 +51,7 @@
         <span class="badge">{{show.year}}</span>
       </a>
     </ul>
-      <select ng-model="main.order" ng-options="order as order.title for order in main.orders"></select>
+      <select ng-model="main.order" ng-options="order as order.title for order in main.orders" ng-if="main.orders"></select>
       <!--<select class="" ng-model="main.order">-->
         <!--<option ng-repeat="order in main.orders"></option>-->
       <!--</select>-->
@@ -83,18 +85,9 @@
 
   </div>
 
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/materialize/dist/js/materialize.js"></script>
 
   <!--<script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>-->
   <!--<script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>-->
-  <script>
-    $(document).ready(function() {
-      $('select').material_select();
-    });
-  </script>
+
 </body>
 </html>
-
-
-
